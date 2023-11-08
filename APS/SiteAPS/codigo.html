@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="menu.css">
+    <title>Código</title>
+</head>
+<body>
+    <div class = "Barra_de_Nav">
+        <table border="1" width = "100%">
+            <tr>
+                <td align = "center" class = "item_tarefas"><a href="menu.html">Inicio</a></td>
+                <td align = "center" class = "item_tarefas"><a href="codigo.html">Código</a></td>
+                <td align = "center" class = "item_tarefas"><a href="documentacao.html">Documentação</a></td>
+                <td align = "center" class = "item_tarefas"><a href="sobre.html">Sobre</a></td>
+            </tr>
+        </table>
+    </div>
+    <div id = "texto_cod">
+    <h1>Código Fonte:</h1>
+    <p>Abaixo segue com o código criado para a utilização desta criptografia, relembrando que o código está em python.</p>
+    <h3>Pré-Visualização:</h3>
+    Representa apenas uma versão visual do código, o código está disponivel acessando o <a href="https://pastebin.com/4deQs3BH"><i>Pastebin</i></a> ou clicando no botão abaixo para acessar.
+    <div class="Codigo">
+        <div id = "pre-cod">
+#IMPORTS, MODULOS<br>
+import random<br>
+import operator<br>
+<br>
+#VARIAVEIS PRINCIPAIS<br>
+usuarios = []<br>
+entrou = 0<br>
+continuar = 0<br>
+<br>
+#VARIAVEIS DE INPUT<br>
+cadastro = 0<br>
+u_login = ""<br>
+u_senha = ""<br>
+<br>
+#FUNÇÕES<br>
+def Login() :<br>
+    global usuarios, entrou, u_login, u_senha<br>
+    print("Para confirmarmos que você realmente já está cadastrado.\nPreencha os dados abaixo.")<br>
+    u_login = str(input("Login > "))<br>
+    u_senha = str(input("Senha > ")) <br>
+    if (u_login + u_senha) in usuarios and u_login != "" and u_senha != "":<br>
+        entrou = 1<br>
+    elif u_login == "" and u_senha == "":<br>
+        print("Preencha corretamente as informações de Login e Senha.")<br>
+        Login()<br>
+    else :<br>
+        print("Login ou Senha incorreto(s)\n Tente novamente.")<br>
+        Login()<br>
+<br>
+    <br>
+def Cadastro() :<br>
+    global cadastro, usuarios, entrou, u_login, u_senha<br>
+    print("Uma pena que já não tenha sido cadastrado.\nComplete as informações abaixo para que possamos realizar seu cadastro.")<br>
+    u_login = str(input("Login > "))<br>
+    u_senha = str(input("Senha > "))<br>
+    usuarios.append(u_login + u_senha + "/")<br>
+    with open('cadastros.txt','r') as salvar:<br>
+        usuarios = operator.add(u_login + u_senha + "/",salvar.read())<br>
+    with open('cadastros.txt','w') as salvar_2 :<br>
+        salvar_2.write(str(usuarios))<br>
+    print("Login cadastrado!! Você já está dentro")<br>
+    entrou = 1<br>
+<br>
+def Menu() :<br>
+    print("O que deseja fazer?\n    Digite 1 se - Criptografar um texto\n    Digite 2 se - Descriptografar um texto")<br>
+    opcao = int(input("> "))<br>
+    if opcao == 1 :<br>
+        alphabet = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '!', '"', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', ']', '^', '_', '`', '{', '|', '}', '~']<br>
+        chave = random.randint(0,len(alphabet))<br>
+        print(f"Sua chave é {chave}")<br>
+        texto = str(input("Digite seu texto > "))<br>
+        print("")<br>
+        listtext = list(texto)<br>
+        index = 0<br>
+        resposta = []<br>
+        while index < len(listtext) :<br>
+            if listtext[index] == " ":<br>
+                resposta.append(" ")<br>
+            elif (len(alphabet))-(alphabet.index(listtext[index])) > chave:<br>
+                resposta.append(alphabet[(alphabet.index(listtext[index]))+chave])<br>
+            elif (len(alphabet))-(alphabet.index(listtext[index])) <= chave:<br>
+                resposta.append(alphabet[(chave) - ((len(alphabet))-(alphabet.index(listtext[index])))])<br>
+            else:<br>
+                resposta.append(" ")<br>
+            index +=1<br>
+        print("".join(resposta))<br>
+        print("\nProcedimento feito com sucesso!!!") <br>
+        continuar = str(input("Deseja continuar fazendo algo? (y/n) > "))<br>
+        if continuar == "y":<br>
+            Menu()<br>
+        else:<br>
+            entrou = 0<br>
+            print("\nVocê saiu da aplicação!!!")<br>
+    elif opcao == 2 :<br>
+        alphabet = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '!', '"', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', ']', '^', '_', '`', '{', '|', '}', '~']<br>
+        chave = int(input("Digite sua chave > "))<br>
+        texto = str(input("Digite seu texto > "))<br>
+        print("")<br>
+        listtext = list(texto)<br>
+        index = 0<br>
+        resposta = []<br>
+        while index < len(listtext) :<br>
+            if listtext[index] == ' ':<br>
+                resposta.append(' ')<br>
+            else: <br>
+                resposta.append(alphabet[(alphabet.index(listtext[index]))-chave])<br>
+            index +=1<br>
+        print("".join(resposta))<br>
+        print("\nProcedimento feito com sucesso!!!") <br>
+        continuar = str(input("Deseja continuar fazendo algo? (y/n) > "))<br>
+        if continuar == "y":<br>
+            Menu()<br>
+        elif continuar == "n":<br>
+            entrou = 0<br>
+            print("\nVocê saiu da aplicação!!!")<br>
+        else:<br>
+            entrou = 0<br>
+            print("\nVocê saiu da aplicação!!!")<br>
+<br>
+<br>
+def Entrada() :<br>
+    global u_login<br>
+    print("Seja Bem-vindo %s \n" %u_login)<br>
+<br>
+#EXECUÇÃO DO PROGRAMA<br>
+with open('cadastros.txt','r') as inicio :<br>
+    usuarios = str(inicio.read())<br>
+    usuarios = usuarios.split('/')<br>
+print("Seja Bem-Vindo\nVocê possui algum cadastro?\n    Digite 1 se - Não possuo cadastro\n    Digite 2 se - Possuo cadastro")<br>
+cadastro = int(input("> "))<br>
+if cadastro == 1 :<br>
+    Cadastro()<br>
+elif cadastro == 2 :<br>
+    Login()<br>
+else :<br>
+    print("Opção inválida!!!")<br>
+<br>
+if entrou == 1 :<br>
+    Entrada()<br>
+    Menu()<br>
+        </div>
+    </div>
+    <h4>Acesso:</h4>
+    Visualize o código aqui: <a href="codigoaps.py" download="codigoaps" type="txt"><input type="button" value="Acessar"></a>
+    <div id = "creditos">
+        <hr>
+        Todos os Direitos Reservados ao Vinicius das Neves Salamene
+    </div>
+</div>
+
+</body> 
+</html>

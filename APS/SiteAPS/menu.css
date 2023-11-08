@@ -1,0 +1,61 @@
+.Barra_de_Nav {
+    background-color: rgb(245, 239, 154);
+    margin-top: 1%;
+    margin-bottom: 1%;
+    padding: 1%
+}
+.Apresentacao{
+    background-color: white;
+    width: 60%;
+    margin: auto;
+    height: 100%;
+}
+#texto_cod{
+    background-color: white;
+    width: 60%;
+    margin: auto;
+    height: 100%;
+    align-items: center;
+    text-align: start;
+    padding-left: 1%;
+    padding-right: 1%;
+}
+.Codigo{
+    color: white;
+    background-color: black;
+    width: 90%;
+    text-align: start;
+    margin: auto;
+}
+#creditos {
+    margin-top: 10%;
+    background-color: white;
+    padding-top: 1%;
+    text-align: center;
+}
+#tabelasobre{
+    vertical-align: top;
+}
+#pre-cod{
+    margin: 2%;
+}
+.item_tarefas{
+    border: 5px solid rgb(47, 47, 189);
+    background-color: rgb(87, 87, 209);
+    text-decoration: none;
+}
+.item_tarefas a:link{
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+}
+.item_tarefas a:visited{
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+}
+body {
+    background-color: rgb(137, 137, 245);
+    margin: auto;
+    font-size: large;
+}
